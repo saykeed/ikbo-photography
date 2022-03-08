@@ -6,21 +6,24 @@
             <router-link :to="link.route"> {{ link.text }}</router-link>
         </li>
       </ul>
-      <i class="material-icons">menu</i>
+      <i class="material-icons" @click="callsidebar">menu</i>
   </div>
 </template>
 
 <script>
 import { ref } from 'vue'
 export default {
-  setup() {
+  setup(props, { emit }) {
     const links = ref([
       {text: 'Services', route: '/services'},
       {text: 'About', route: '/about'},
       {text: 'Contact', route: '/contact'}
     ])
+    const callsidebar = () => {
+     emit('toggleSidebar')
+    }
 
-    return { links }
+    return { links, callsidebar }
   }
 }
 </script>
@@ -32,6 +35,7 @@ export default {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    background: black;
 }
 
 ul.navlinks{

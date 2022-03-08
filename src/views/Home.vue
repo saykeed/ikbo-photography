@@ -2,8 +2,8 @@
   <div class="home">
     <div class="intro">
          <h1>Hi, I'm Ismail, Professional Photo & Videographer</h1>
-         <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cumque soluta tenetur maxime ad iure placeat, qui aspernaveritatis.</p>
-         <div class="introBtn"><i class="fa fa-whatsapp"></i> Let's talk</div>
+         <p>We offer the full spectrum of Media services. From creating standard Wedding photography experience to Fashion and Potrait Photography to Video Production.</p>
+         <div class="Btn"><i class="fa fa-whatsapp"></i> Let's talk</div>
     </div>
     <div class="imgPrev">
       <img v-for="image in images" :key="image.src" :src="image.src" alt="">
@@ -13,6 +13,34 @@
         <h2>{{ profile.figure }}<span>+</span></h2>
         <p>{{ profile.text }}</p>
       </div>
+    </div>
+    <div class="firstrow">
+      <div class="writeup">
+        <p style="color: rgb(225, 85, 10);">Potrait Photography</p>
+        <h2>We make story <br/> with every image </h2>
+        <p>At Ikbo photography and coverage, you are our super star and all activities at the studio is geared towards making you comfortable</p>
+        <div class="Btn">Book Now</div>
+      </div>
+      <div>
+        <img src="../assets/slides/twentyseven.jpg" alt="potrait img">
+      </div>
+    </div>
+
+    <div class="secondrow">
+      <div class="writeup">
+        <p style="color: rgb(225, 85, 10);">Wedding Photography</p>
+        <h2>We make story <br/> with every image </h2>
+        <p>The people who hire me as a wedding photographer hire me not just because of my photographic style, they hire me because of the style of my personality. My style and personality match, so they know they're getting a genuine style.</p>
+        <div class="Btn">Book Now</div>
+      </div>
+      <div>
+        <img src="../assets/slides/fourteen.jpg" alt="potrait img">
+      </div>
+    </div>
+    
+    <div class="footer">
+      <h1>IKBO</h1>
+      <p>Copywrite Ikbo Media @ 2022</p>
     </div>
 
   </div>
@@ -52,7 +80,7 @@ export default {
     text-align: center;
   }
   .home p{
-    font-size: 13px;
+    font-size: 15px;
     color: rgba(255, 255, 255, 0.412);
   }
   .intro{
@@ -63,7 +91,7 @@ export default {
   .intro p{
     margin: 10px auto;
   }
-  .introBtn{
+  .Btn{
     background: rgb(225, 85, 10);
     width: fit-content;
     padding: 10px;
@@ -76,11 +104,14 @@ export default {
     width: 100%;
     overflow-x: scroll;
     display: flex;
+    padding: 0 2%;
   }
   .imgPrev img{
     width: auto;
     height: 150px; 
     margin: 10px;
+    border-radius: 20px;
+    box-shadow: 2px 2px 8px rgba(255, 255, 255, 0.624);
   }
   .profile{
     display: flex;
@@ -89,13 +120,48 @@ export default {
     flex-wrap: wrap;
     width: 80%;
     max-width: 600px;
-    margin: 0 auto;
+    margin: 20px auto;
   }
   .profile div{
     width: 46%;
     margin: 2%;
   }
+  .profile div h2 span{
+    color: rgb(225, 85, 10);
+  }
+  .firstrow, .secondrow{
+    width: 90%;
+    margin: 0 auto;
+  }
+  .firstrow div, .secondrow div{
+    margin: 40px auto
+  }
+  .firstrow .writeup, .secondrow .writeup{
+    max-width: 400px;
+  }
+  .firstrow .Btn, .secondrow .Btn{
+    margin: 10px auto;
+    text-align: center;
+  }
+  .firstrow img{
+    width: 200px;
+    height: 250px;
+    object-fit: cover;
+    object-position: center top;
+    border-radius: 50px 0 0 0;
+  }
 
+  .secondrow img{
+    width: 200px;
+    height: 250px;
+    object-fit: cover;
+    object-position: center top;
+    border-radius: 0 50px 0 0;
+  }
+  .footer{
+    margin: 100px auto 0;
+  }
+  
 
 
 
@@ -106,7 +172,36 @@ export default {
       .profile{
         justify-content: space-between;
       }
-      
+      .profile div{
+        width: fit-content;
+      }
+      .firstrow, .secondrow{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .secondrow{
+        flex-direction: row-reverse;
+      }
+      .firstrow div, .secondrow div{
+        width: 44%
+      }
+      .firstrow .writeup, .secondrow .writeup{
+        text-align: left;
+      }
+      .firstrow .writeup h2, .secondrow .writeup h2{
+        font-size: 40px;
+      }
+      .firstrow div:nth-child(2){
+        text-align: right;
+      }
+      .secondrow div:nth-child(2){
+        text-align: left;
+      }
+      .firstrow .Btn, .secondrow .Btn{
+        margin: 10px 0;
+        text-align: center;
+      }
   }
 </style>
 
