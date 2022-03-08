@@ -15,8 +15,7 @@ import { ref } from 'vue'
 export default {
   setup(props, { emit }) {
     const links = ref([
-      {text: 'Services', route: '/services'},
-      {text: 'About', route: '/about'},
+      {text: 'Gallery', route: '/gallery'},
       {text: 'Contact', route: '/contact'}
     ])
     const callsidebar = () => {
@@ -60,6 +59,9 @@ ul.navlinks li a{
 @media screen and (min-width:960px){
     ul.navlinks{
       display: flex;
+    }
+    .nav i{
+      display: none;
     }
     
 }

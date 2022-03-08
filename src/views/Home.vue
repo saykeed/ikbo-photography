@@ -39,8 +39,12 @@
     </div>
     
     <div class="footer">
-      <h1>IKBO</h1>
+      <h3>IKBO</h3>
       <p>Copywrite Ikbo Media @ 2022</p>
+      <div class="socialBtn">
+          <i class="fa fa-facebook"></i>
+          <i class="fa fa-instagram"></i>
+      </div>
     </div>
 
   </div>
@@ -160,6 +164,14 @@ export default {
   }
   .footer{
     margin: 100px auto 0;
+  }
+  .socialBtn{
+    margin: 10px auto;
+  }
+  .socialBtn i{
+    padding: 10px;
+    margin: 0 5px;
+    font-size: 20px;
   }
   
 

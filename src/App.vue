@@ -4,12 +4,13 @@
     <Sidemenu v-if="sidebarStatus" class="sidebar"/>
   </transition>
   <div class="routerPage">
-    <router-view/>
+    <router-view />
   </div>
 </template>
 
 <script>
-import { ref } from '@vue/reactivity'
+import { useRouter } from 'vue-router'
+import { ref } from 'vue'
 import Nav from './components/Nav.vue'
 import Sidemenu from './components/Sidemenu.vue'
 export default {
@@ -19,10 +20,16 @@ export default {
     const toggleStatus = () => {
       sidebarStatus.value = !sidebarStatus.value
     }
+    const router = useRouter()
+    router.afterEach(() => {
+      sidebarStatus.value = false;
+    })
+    
 
     
-    return { sidebarStatus, toggleStatus }
+    return { sidebarStatus, toggleStatus, router }
   },
+  
 }
 </script>
 <style>
@@ -48,3 +55,10 @@ export default {
   transition: all .3s ease;
 }
 </style>
+
+
+/* 
+
+
+
+*/

@@ -15,8 +15,7 @@ export default {
     setup() {
         const links = ref([
             {text: 'Home', route: '/'},
-            {text: 'Services', route: '/services'},
-            {text: 'About', route: '/about'},
+            {text: 'Gallery', route: '/gallery'},
             {text: 'Contact', route: '/contact'}
         ])
 
@@ -46,16 +45,17 @@ export default {
     color: black;
     font-size: 20px;
     margin-left: 10px;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .sidenav li a:active{
-    background: rgba(151, 221, 242, 0.268);
+    background: black;
     color: white;
     border-radius: 20px 0 0 20px;
 }
 
 .sidenav li a.router-link-exact-active{
-    background: rgba(151, 221, 242, 0.268);
+    background: black;
     color: white;
     border-radius: 20px 0 0 20px;
 }
