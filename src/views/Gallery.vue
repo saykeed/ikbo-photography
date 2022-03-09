@@ -80,7 +80,7 @@ export default {
         height: auto;
         width: 80%;
         max-width: 250px;
-        margin: 10px auto;
+        margin: 10px;
         object-fit: cover;
         object-position: center top;
     }
