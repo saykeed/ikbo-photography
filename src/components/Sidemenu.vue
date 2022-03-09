@@ -29,6 +29,7 @@ export default {
     background: white;
     height: 100vh;
     width: 250px;
+    z-index: 9999;
 }
 .menu p{
     color: red;

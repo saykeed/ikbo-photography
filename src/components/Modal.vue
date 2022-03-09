@@ -2,15 +2,10 @@
     <div class="modal">
         <i class="fa fa-close close" @click="closeModal"></i>
         <div class="modaldetails">
-            <div class="modalImg">
-                <transition-group name="modalSlideLeft" mode="out-in"> 
-                   <img v-show="index == currentIndex" v-for="(image, index) in images" :key="image" :src="require('../assets/img/' + image + '.jpg')" alt="modal image">
-                </transition-group>
+            <div class="modalImg"> 
+                <img v-show="index == currentIndex" v-for="(image, index) in images" :key="image" :src="require('../assets/img/' + image + '.jpg')" alt="modal image">
                 <i class="fa fa-chevron-left left" @click="prev"></i>
                 <i class="fa fa-chevron-right right" @click="next"></i>
-            </div>
-            <div class="slidePrev">
-                <img :class="{currentslide: index == currentIndex}" v-for="(image, index) in images" :key="image" :src="require('../assets/img/' + image + '.jpg')" alt="">
             </div>
         </div>
     </div>
@@ -63,6 +58,7 @@ export default {
         width: 100vw;
         background: rgba(0, 0, 0, 0.900);
         text-align: center;
+        z-index: 99999;
     }
 
     .modal i.close{
@@ -72,7 +68,6 @@ export default {
         font-size: 20px;
     }
     .modaldetails{
-        border: 1px solid red;
         height: 80%;
         width: 80%;
         max-width: 500px;
@@ -80,25 +75,22 @@ export default {
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
     }
     .modalImg{
-        position: relative;
-        height: 80%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 90%;
+        height: auto;
         overflow: hidden;
     }
 
     .modalImg img{
         width: 90%;
-        height: 80%;
+        height: auto;
         object-fit: cover;
         object-position: center top;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
     }
     .modalImg i{
         position: absolute;
@@ -115,37 +107,6 @@ export default {
 
     .modalImg i.right{
         right: 0;
-    }
-    .slidePrev{
-        margin: 10px auto;
-        width: 100%;
-        display: flex;
-        align-items: center;
-        overflow: auto;
-    }
-    .slidePrev img{
-        height: 40px;
-        width: 40px;
-        margin: 5px;
-        transition: all .5s ease;
-    }
-    .slidePrev img.currentslide{
-        height: 60px;
-        width: 60px;
-        border-radius: 10px;
-    }
-
-    .modalSlideLeft-leave-to{
-        transform: translateX(-100%);
-    }
-    .modalSlideLeft-leave-active{
-        transition: all .5s ease-in-out;
-    }
-    .modalSlideLeft-enter-from{
-        transform: translateX(100%);
-    }
-    .modalSlideLeft-enter-active{
-        transition: all .5s ease-in-out;
     }
     
     

@@ -1,14 +1,21 @@
 <template>
   <div class="contact">
+    <a id="outerlink" ref="phone" href="tel:07031228335">Call us at 866-556-2570</a>
+    <a id="outerlink" ref="whatsapp" href="https://api.whatsapp.com/send?phone=+2347031228335">Click to connect +506 0000 0000</a>
+    <a id="outerlink" ref="email" href="mailto:Ikbo@gmail.com">Send email</a>
       <div class="contactbox">
           <div class="one">
             <h1>NOW THAT YOU ARE HERE</h1>
             <p>Feel free to contact us...</p>
-            <ul>
-              <li v-for="(option, index) in options" :key="option.index">
+            <transition-group tag="ul"
+              appear
+              @before-enter="beforeEnter"
+              @enter="enter"
+            >
+              <li v-for="(option, index) in options" :key="option.label" @click="contactIkbo(option.label)" :data-index="index">
                 <i :class="option.icon"></i> {{ option.text }}
               </li>
-            </ul>
+            </transition-group> 
           </div>
           <div class="two">
             <form>
@@ -20,21 +27,62 @@
           </div>
       </div>
   </div>
+  <Location v-if="locationModal" @closeLocationModal="closeModal"/>
 </template>
 
 <script>
 import { ref } from '@vue/reactivity'
+import gsap from 'gsap'
+import Location from '../components/Location.vue'
 export default {
+  components: { Location },
   setup() {
     const options = ref([
-      {text: '09090909090', icon: 'fa fa-phone'},
-      {text: 'Ikbo@gmail.com', icon: 'fa fa-envelope'},
-      {text: '09090909090', icon: 'fa fa-facebook'},
-      {text: 'Click me', icon: 'fa fa-map-marker'}
+      {text: '09090909090', icon: 'fa fa-phone', label: 'phone'},
+      {text: 'Ikbo@gmail.com', icon: 'fa fa-envelope', label: 'email'},
+      {text: '09090909090', icon: 'fa fa-whatsapp', label: 'whatsapp'},
+      {text: 'Click me', icon: 'fa fa-map-marker', label: 'location'}
     ])
+    const phone = ref(null)
+    const email = ref(null)
+    const whatsapp = ref(null)
+    const locationModal = ref(false)
 
 
-    return { options }
+    const contactIkbo = (x) => {
+      if(x === 'phone') {
+        phone.value.click()
+      } else if(x === 'whatsapp') {
+        whatsapp.value.click()
+      } else if(x === 'email') {
+        email.value.click()
+      } else if(x === 'location') {
+        setTimeout(() => {
+          locationModal.value = true;
+        }, 200)
+      }
+    }
+
+    const closeModal = () => {
+      locationModal.value = false;
+    }
+
+    const beforeEnter = (el) => {
+      el.style.opacity = 0 
+      el.style.transform = 'translateY(70px)'
+    }
+
+    const enter = (el, done) => {
+      gsap.to(el, {
+        duration: 1.2,
+        y: 0,
+        opacity: 1,
+        onComplete: done,
+        delay: 0.5 * el.dataset.index
+      })
+    }
+
+    return { options, beforeEnter, enter, contactIkbo, phone, email, whatsapp, locationModal, closeModal }
   }
 }
 </script>
@@ -59,8 +107,16 @@ div.contactbox{
     border-radius: 20px;
     box-shadow: 2px 2px 2px rgba(250, 250, 250, 0.300), -2px -2px 2px rgba(250, 250, 250, 0.300);
   }
+  div.one ul li:active{
+    background: rgba(255, 255, 255, 0.227); 
+  }
+  div.one ul li:hover{
+    background: rgba(255, 255, 255, 0.227); 
+  }
   div.one ul li i{
     width: 30px;
+    font-size: 18px;
+    color: orangered;
   }
   div.two form{
     background: white;

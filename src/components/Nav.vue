@@ -15,6 +15,7 @@ import { ref } from 'vue'
 export default {
   setup(props, { emit }) {
     const links = ref([
+      {text: 'Home', route: '/'},
       {text: 'Gallery', route: '/gallery'},
       {text: 'Contact', route: '/contact'}
     ])
@@ -30,11 +31,20 @@ export default {
 <style>
 .nav{
     color: white;
-    padding: 15px;
+    padding: 5px 0 5px 10px; 
     display: flex;
     align-items: center;
     justify-content: space-between;
     background: black;
+}
+
+.nav i{
+  padding: 10px;
+}
+
+.nav i:active{
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.316)
 }
 
 ul.navlinks{

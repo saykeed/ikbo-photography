@@ -52,8 +52,10 @@ export default {
         const modalStatus = ref(false);
         const modalPath = ref('');
         const openModal = (path) => {
-            modalStatus.value = !modalStatus.value
-            modalPath.value = path
+            setTimeout(() => {
+                modalStatus.value = !modalStatus.value
+                modalPath.value = path
+            }, 200)
         }
         const closeModal = () => {
             modalStatus.value = false;
@@ -77,11 +79,17 @@ export default {
         justify-content: center;
     }
     .gallerybox img{
-        height: auto;
-        width: 80%;
+        height: 200px;
+        width: auto;
         max-width: 250px;
         margin: 10px;
         object-fit: cover;
         object-position: center top;
+        transition: all 1s ease;
+    }
+    .gallerybox img:hover{
+        transform: translateY(-10px);
+        box-shadow: 3px 3px 4px rgba(255, 255, 255, 0.576);
+        border-radius: 20px;
     }
 </style>

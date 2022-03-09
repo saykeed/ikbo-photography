@@ -6,6 +6,7 @@
   <div class="routerPage">
     <router-view />
   </div>
+  <Footer/>
 </template>
 
 <script>
@@ -13,8 +14,9 @@ import { useRouter } from 'vue-router'
 import { ref } from 'vue'
 import Nav from './components/Nav.vue'
 import Sidemenu from './components/Sidemenu.vue'
+import Footer from './components/Footer.vue'
 export default {
-  components: { Nav, Sidemenu },
+  components: { Nav, Sidemenu, Footer },
   setup() {
     const sidebarStatus = ref(false);
     const toggleStatus = () => {

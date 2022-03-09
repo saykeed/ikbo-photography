@@ -1,9 +1,10 @@
 <template>
   <div class="home">
+    <a id="outerlink" ref="whatsapp" href="https://api.whatsapp.com/send?phone=+2347031228335">Click to connect +506 0000 0000</a>
     <div class="intro">
-         <h1>Hi, I'm Ismail, Professional Photo & Videographer</h1>
+         <h1>Hi, I'm Ikbo, A Professional Photo & Videographer</h1>
          <p>We offer the full spectrum of Media services. From creating standard Wedding photography experience to Fashion and Potrait Photography to Video Production.</p>
-         <div class="Btn"><i class="fa fa-whatsapp"></i> Let's talk</div>
+         <div class="Btn" @click="loadWhatsapp"><i class="fa fa-whatsapp"></i> Let's talk</div>
     </div>
     <div class="imgPrev">
       <img v-for="image in images" :key="image.src" :src="image.src" alt="">
@@ -19,7 +20,7 @@
         <p style="color: rgb(225, 85, 10);">Potrait Photography</p>
         <h2>We make story <br/> with every image </h2>
         <p>At Ikbo photography and coverage, you are our super star and all activities at the studio is geared towards making you comfortable</p>
-        <div class="Btn">Book Now</div>
+        <div class="Btn" @click="contactUs">Book Now</div>
       </div>
       <div>
         <img src="../assets/slides/twentyseven.jpg" alt="potrait img">
@@ -31,19 +32,10 @@
         <p style="color: rgb(225, 85, 10);">Wedding Photography</p>
         <h2>We make story <br/> with every image </h2>
         <p>The people who hire me as a wedding photographer hire me not just because of my photographic style, they hire me because of the style of my personality. My style and personality match, so they know they're getting a genuine style.</p>
-        <div class="Btn">Book Now</div>
+        <div class="Btn" @click="contactUs">Book Now</div>
       </div>
       <div>
         <img src="../assets/slides/fourteen.jpg" alt="potrait img">
-      </div>
-    </div>
-    
-    <div class="footer">
-      <h3>IKBO</h3>
-      <p>Copywrite Ikbo Media @ 2022</p>
-      <div class="socialBtn">
-          <i class="fa fa-facebook"></i>
-          <i class="fa fa-instagram"></i>
       </div>
     </div>
 
@@ -52,6 +44,7 @@
 
 <script>
 import { ref } from '@vue/reactivity'
+import { useRouter } from 'vue-router'
 
 export default {
   setup() {
@@ -73,8 +66,18 @@ export default {
       {text: 'Complete Project', figure: '250'},
       {text: 'Customer Base', figure: '134'}
     ])
+    
+    const whatsapp = ref(null)
+    const loadWhatsapp = () => {
+      whatsapp.value.click()
+    }
+    const router = useRouter()
+    const contactUs= () => {
+      router.push("/contact")
+    }
+    
 
-    return { images, profiles }
+    return { images, profiles, loadWhatsapp, whatsapp, contactUs }
   }
 }
 </script>
@@ -102,6 +105,12 @@ export default {
     border-radius: 10px;
     margin: 5px auto;
     font-size: 17px;
+  }
+  .Btn:hover{
+    background: rgba(225, 85, 10, 0.618);
+  }
+  .Btn:active{
+    background: rgba(225, 85, 10, 0.618);
   }
   .imgPrev{
     height: 200px;
@@ -162,17 +171,7 @@ export default {
     object-position: center top;
     border-radius: 0 50px 0 0;
   }
-  .footer{
-    margin: 100px auto 0;
-  }
-  .socialBtn{
-    margin: 10px auto;
-  }
-  .socialBtn i{
-    padding: 10px;
-    margin: 0 5px;
-    font-size: 20px;
-  }
+ 
   
 
 
