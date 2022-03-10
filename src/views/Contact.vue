@@ -1,5 +1,5 @@
 <template>
-  <div class="contact">
+  <div class="contact" ref="contactpage">
     <a id="outerlink" ref="phone" href="tel:07031228335">Call us at 866-556-2570</a>
     <a id="outerlink" ref="whatsapp" href="https://api.whatsapp.com/send?phone=+2347031228335">Click to connect +506 0000 0000</a>
     <a id="outerlink" ref="email" href="mailto:Ikbo@gmail.com">Send email</a>
@@ -82,7 +82,20 @@ export default {
       })
     }
 
+    
+
     return { options, beforeEnter, enter, contactIkbo, phone, email, whatsapp, locationModal, closeModal }
+  },
+  mounted() { 
+    /*
+    let c = this.$refs.contactpage
+    // auto scroll back to top
+    const scrollback = () => {
+      console.log(c)
+      c.scrollTo(0, 0);
+    }
+    scrollback()
+    */
   }
 }
 </script>
@@ -122,6 +135,8 @@ div.contactbox{
     background: white;
     border-radius: 10px;
     padding: 20px;
+    max-width: 500px;
+    margin: 0 auto;
   }
   div.two form input, #message{
     border: 1px solid rgba(0,0,0,0.300);

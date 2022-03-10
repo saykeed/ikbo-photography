@@ -22,10 +22,31 @@ export default {
     }
     .socialBtn{
         margin: 10px auto;
+        width: fit-content;
+        display: flex;
+        align-items: center;
     }
     .socialBtn i{
-        padding: 10px;
+        width: 40px;
+        height: 40px;
+        border-radius: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         margin: 0 5px;
         font-size: 20px;
+        transition: all .5s ease;
     }
+    .socialBtn i:active{
+        background: rgba(255, 255, 255, 0.481);
+    }
+    
+
+    /*for the responsieve screen of lg and above*/
+    @media screen and (min-width:960px){
+        .socialBtn i:hover{
+            background: rgba(255, 255, 255, 0.481);
+        }
+    }
+    
 </style>

@@ -1,9 +1,9 @@
 <template>
-  <Nav class="navbar" @toggleSidebar="toggleStatus"/>
+  <Nav class="navbar" @toggleSidebar="toggleStatus" :toggler="toggler"/>
   <transition name="menuslide">
-    <Sidemenu v-if="sidebarStatus" class="sidebar"/>
+    <Sidemenu v-if="sidebarStatus" class="sidebar" @closeSidebar="toggleStatus"/>
   </transition>
-  <div class="routerPage">
+  <div class="routerPage" ref="page">
     <router-view />
   </div>
   <Footer/>
@@ -18,18 +18,30 @@ import Footer from './components/Footer.vue'
 export default {
   components: { Nav, Sidemenu, Footer },
   setup() {
+    const page = ref(null)
+    const toggler = ref('menu')
     const sidebarStatus = ref(false);
+    const switchToggler = () => {
+      if(sidebarStatus.value == false) {
+        toggler.value = 'menu'
+      } else {
+        toggler.value = 'close'
+      }
+    }
     const toggleStatus = () => {
       sidebarStatus.value = !sidebarStatus.value
+      switchToggler()
     }
     const router = useRouter()
     router.afterEach(() => {
       sidebarStatus.value = false;
+      switchToggler()
     })
+    
     
 
     
-    return { sidebarStatus, toggleStatus, router }
+    return { sidebarStatus, toggleStatus, router, page, toggler }
   },
   
 }

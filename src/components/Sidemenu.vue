@@ -1,5 +1,5 @@
 <template>
-  <div class="menu">
+  <div class="menu" ref="sideMenu">
       <ul class="sidenav">
           <li v-for="link in links" :key="link.text">
               <router-link :to="link.route"> {{ link.text }}</router-link>
@@ -12,15 +12,38 @@
 <script>
 import { ref } from '@vue/reactivity'
 export default {
-    setup() {
+    setup(props, { emit }) {
+        const touchStart = ref(null)
+        const touchEnd = ref(null)
         const links = ref([
             {text: 'Home', route: '/'},
             {text: 'Gallery', route: '/gallery'},
             {text: 'Contact', route: '/contact'}
         ])
 
-      return { links }
-    }
+        const touchstart = (event) => {
+            touchStart.value = event.touches[0].clientX;
+            touchEnd.value = 0;
+        }
+        const touchmove = (event) => {
+            touchEnd.value = event.touches[0].clientX;
+        }
+        const touchend = () => {
+            if(touchStart.value > touchEnd.value) {
+                emit('closeSidebar')
+            }
+        }
+
+
+
+      return { links, touchstart, touchend, touchmove }
+    },
+    mounted() { 
+        let sideBar = this.$refs.sideMenu;
+        sideBar.addEventListener('touchstart', (event) => {this.touchstart(event)})
+        sideBar.addEventListener('touchmove', (event) => {this.touchmove(event)})
+        sideBar.addEventListener('touchend', () => {this.touchend()})
+  }
 }
 </script>
 

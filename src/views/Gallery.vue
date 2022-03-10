@@ -79,7 +79,7 @@ export default {
         justify-content: center;
     }
     .gallerybox img{
-        height: 200px;
+        height: 150px;
         width: auto;
         max-width: 250px;
         margin: 10px;
@@ -91,5 +91,13 @@ export default {
         transform: translateY(-10px);
         box-shadow: 3px 3px 4px rgba(255, 255, 255, 0.576);
         border-radius: 20px;
+    }
+
+
+    /*for the responsieve screen of lg and above*/
+    @media screen and (min-width:600px){
+        .gallerybox img{
+            height: 200px;
+        }
     }
 </style>
