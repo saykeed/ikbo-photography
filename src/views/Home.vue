@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <a id="outerlink" ref="whatsapp" href="https://api.whatsapp.com/send?phone=+2347031228335">Click to connect +506 0000 0000</a>
+    <a id="outerlink" ref="whatsapp" href="https://api.whatsapp.com/send?phone=+2348029480439">Click to connect +506 0000 0000</a>
     <div class="intro">
          <h1>Hi, I'm Ikbo, A Professional Photo & Videographer</h1>
          <p>We offer the full spectrum of Media services. From creating standard Wedding photography experience to Fashion and Potrait Photography to Video Production.</p>

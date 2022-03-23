@@ -1,10 +1,10 @@
 <template>
-  <div class="footer">
+    <div class="footer">
       <h3>IKBO</h3>
       <p>Copywrite Ikbo Media @ 2022</p>
       <div class="socialBtn">
-          <i class="fa fa-facebook"></i>
-          <i class="fa fa-instagram"></i>
+          <a target="blank" href="https://www.facebook.com/kehinde.ismaeelabolaji"><i class="fa fa-facebook"></i></a>
+          <a target="blank" href="https://www.instagram.com/kehindeismaeelabolaji/#"><i class="fa fa-instagram"></i></a>
       </div>
     </div>
 </template>
@@ -25,6 +25,11 @@ export default {
         width: fit-content;
         display: flex;
         align-items: center;
+    }
+    .socialBtn a{
+        text-decoration: none;
+        color: white;
+        -webkit-tap-highlight-color: transparent;
     }
     .socialBtn i{
         width: 40px;
